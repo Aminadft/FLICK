@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { Container } from '@mui/system';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/header/header';
+import SimpleBottomNavigation from './components/mainNav';
+import Trending from './components/Pages/Trending/Trending';
+import Movies from './components/Pages/Movies/Movies';
+import Series from './components/Pages/Series/Series';
+import Search from './components/Pages/Search/Search';
+
+// https://developers.themoviedb.org/3/getting-started/introduction
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <div className="app">
+
+
+      <Container>
+        <Routes>
+          <Route path='/' element={<Trending/>} exact/>
+          <Route path='/movies' element={<Movies/>} />
+          <Route path='/series' element={<Series/>} />
+          <Route path='/search' element={<Search/>} />
+
+        </Routes>
+      </Container>
+
+      </div>
+
+      <SimpleBottomNavigation />
+    </BrowserRouter>
   );
 }
 
